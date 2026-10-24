@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TMS — The Merch Shop</title>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0C0C0C;--surface:#17160F;--fg:#F3F2ED;--muted:#9B998E;--olive:#5C6B4A;--olive-soft:#8FA37C;--border:#2A2924;--err:#D46A5A;--r:4px;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#F6F5F0;--surface:#FFFFFF;--fg:#151512;--muted:#6B6A62;--olive:#4A5A3A;--olive-soft:#4A5A3A;--border:#DAD8CE}}
+:root[data-theme="dark"]{--bg:#0C0C0C;--surface:#17160F;--fg:#F3F2ED;--muted:#9B998E;--olive:#5C6B4A;--olive-soft:#8FA37C;--border:#2A2924}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;height:100%}
+body{background:var(--bg);color:var(--fg);font-family:'Archivo',sans-serif;line-height:1.55;overflow-x:hidden}
+h1,h2,h3,.d{font-family:'Big Shoulders Display',sans-serif;font-weight:800;line-height:.95}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.w{max-width:1200px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}@media(max-width:700px){section{padding:64px 0}}
+.sh{margin-bottom:36px}.sh h2{font-size:clamp(32px,4.4vw,52px)}.sh p{color:var(--muted);max-width:50ch;margin-top:10px}
+nav{position:fixed;top:0;left:0;right:0;z-index:40;padding-top:env(safe-area-inset-top,0px);border-bottom:1px solid transparent;transition:background-color .2s,border-color .2s}
+nav.s{background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-color:var(--border)}
+.ni{max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-size:24px}.logo i{color:var(--olive-soft);font-style:normal}
+.nl{display:flex;gap:30px;font-size:14px;color:var(--muted)}.nl a:hover{color:var(--fg)}
+@media(max-width:700px){.nl{display:none}}
+.cartbtn{border:1px solid var(--border);background:transparent;color:var(--fg);padding:9px 16px;border-radius:var(--r);font:inherit;font-size:14px;cursor:pointer;transition:border-color .15s}
+.cartbtn:hover{border-color:var(--olive-soft)}
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;color:#F3F2ED}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 30%;transform:scale(1.08);animation:settle 1.6s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes settle{to{transform:none}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,12,12,.2),rgba(12,12,12,.05) 40%,rgba(12,12,12,.9))}
+.hc{position:relative;z-index:2;width:100%;padding-bottom:64px}
+.hc>*{opacity:0;transform:translateY(14px);animation:rise .8s ease forwards}
+.hc h1{font-size:clamp(44px,8vw,104px);max-width:14ch;animation-delay:.5s}.hc p{margin-top:20px;max-width:46ch;color:#C9C7BC;animation-delay:.75s}.hc .acts{margin-top:28px;animation-delay:.95s}
+@keyframes rise{to{opacity:1;transform:none}}
+.btn{display:inline-block;padding:14px 26px;border-radius:var(--r);border:0;background:var(--olive);color:#F3F2ED;font:inherit;font-weight:600;font-size:15px;cursor:pointer;transition:background-color .15s}
+.btn:hover{background:#6E8059}.btn:disabled{opacity:.6;cursor:default}
+.btn.g{background:transparent;border:1px solid var(--border);color:var(--fg)}.btn.g:hover{border-color:var(--olive-soft)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}@media(max-width:800px){.two{grid-template-columns:1fr}}
+.two img{border-radius:var(--r);width:100%}
+.pill{border-top:1px solid var(--border)}.pill div{padding:20px 0;border-bottom:1px solid var(--border)}.pill b{display:block;font-weight:600}.pill span{color:var(--muted);font-size:14px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}@media(max-width:760px){.steps{grid-template-columns:1fr 1fr}}
+.steps div{background:var(--bg);padding:26px 22px}.steps .d{font-size:32px;color:var(--olive-soft)}.steps b{display:block;margin-top:10px;font-weight:600;font-size:15px}.steps span{font-size:14px;color:var(--muted)}
+.tabs{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
+.tab{padding:10px 20px;border:1px solid var(--border);background:transparent;color:var(--muted);border-radius:var(--r);font:inherit;font-size:14px;cursor:pointer;transition:all .15s}
+.tab:hover{color:var(--fg)}.tab[aria-selected="true"]{border-color:var(--olive-soft);color:var(--fg);background:color-mix(in srgb,var(--olive) 20%,transparent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;animation:rise .35s ease both}
+.ph{aspect-ratio:1/1.1;overflow:hidden;background:var(--bg);display:grid;place-items:center;color:var(--muted);font-size:13px}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform .45s cubic-bezier(.2,.7,.2,1)}.card:hover .ph img{transform:scale(1.04)}
+.cb{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}.cb h3{font-family:'Archivo';font-size:17px;font-weight:600;line-height:1.3}
+.cb small{color:var(--muted);font-size:13px}.pr{font-family:'Big Shoulders Display';font-weight:700;font-size:22px;color:var(--olive-soft)}
+.row{display:flex;gap:10px;align-items:center;margin-top:auto;padding-top:10px}
+.q{display:flex;align-items:center;border:1px solid var(--border);border-radius:var(--r)}
+.q button{width:34px;height:38px;background:none;border:0;color:var(--fg);font-size:17px;cursor:pointer}.q button:hover{color:var(--olive-soft)}.q span{min-width:26px;text-align:center;font-size:15px}
+.row .btn{flex:1;padding:10px;font-size:14px}
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .25s;z-index:50}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--surface);border-left:1px solid var(--border);z-index:51;transform:translateX(100%);transition:transform .3s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;padding:calc(24px + env(safe-area-inset-top,0px)) 24px calc(24px + env(safe-area-inset-bottom,0px))}
+body.dr .scrim{opacity:1;pointer-events:auto}body.dr .drawer{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.dh h2{font-size:30px}
+.x{background:none;border:0;color:var(--muted);font-size:26px;cursor:pointer}.x:hover{color:var(--fg)}
+.lines{flex:1;overflow-y:auto}.ln{display:grid;grid-template-columns:56px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);align-items:center}
+.ln img,.ln .t{width:56px;height:56px;object-fit:cover;border-radius:var(--r);background:var(--bg)}.ln b{font-weight:500;font-size:14px;display:block}.ln small{color:var(--muted);font-size:13px}
+.empty{color:var(--muted);padding:30px 0;text-align:center}
+.tot{display:flex;justify-content:space-between;padding:8px 0;color:var(--muted);font-size:15px}.tot.b{color:var(--fg);font-weight:600;font-size:19px;border-top:1px solid var(--border);margin-top:6px;padding-top:14px}
+/* checkout */
+#co{position:fixed;inset:0;z-index:60;background:var(--bg);overflow-y:auto;display:none;padding-top:env(safe-area-inset-top,0px)}body.co{overflow:hidden}body.co #co{display:block}
+.cw{max-width:1080px;margin:0 auto;padding:24px 24px 70px}
+.ch{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.flow{display:flex;gap:10px;font-size:13px;color:var(--muted);margin-bottom:26px;flex-wrap:wrap}.flow b{font-weight:500}.flow .on{color:var(--olive-soft)}
+.cg{display:grid;grid-template-columns:1.25fr 1fr;gap:36px;align-items:start}@media(max-width:860px){.cg{grid-template-columns:1fr}}
+fieldset{border:0;margin-bottom:30px;min-width:0}legend{font-weight:600;font-size:17px;margin-bottom:14px}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:520px){.r2{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:var(--muted);margin-bottom:12px}
+input,select,textarea{width:100%;margin-top:6px;padding:12px 14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);color:var(--fg);font:inherit;font-size:15px;transition:border-color .15s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--olive-soft)}.bad{border-color:var(--err)!important}textarea{resize:vertical;min-height:70px}
+.pt{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+.pane{display:none;border:1px solid var(--border);border-radius:var(--r);padding:20px;background:var(--surface)}.pane.on{display:block;animation:rise .25s ease both}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}.kv:last-of-type{border:0}.kv span:first-child{color:var(--muted)}.kv b{font-weight:500;text-align:right;word-break:break-all}
+.cp{background:none;border:1px solid var(--border);color:var(--fg);border-radius:var(--r);padding:2px 9px;font:inherit;font-size:12px;margin-left:8px;cursor:pointer}
+.note{font-size:13px;color:var(--muted);margin-top:12px}
+.tk{display:flex;gap:8px;margin-bottom:12px}.tk button{flex:1;padding:10px;background:none;border:1px solid var(--border);border-radius:var(--r);color:var(--muted);font:inherit;cursor:pointer}.tk button[aria-pressed="true"]{border-color:var(--olive-soft);color:var(--fg)}
+.sum{position:sticky;top:20px;border:1px solid var(--border);border-radius:var(--r);padding:22px;background:var(--surface)}.sum h2{font-size:26px;margin-bottom:12px}
+.done{display:none;text-align:center;padding:90px 20px}.done h1{font-size:clamp(40px,6vw,64px);margin-bottom:12px}.done p{color:var(--muted);max-width:44ch;margin:0 auto 24px}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--fg);color:var(--bg);padding:12px 20px;border-radius:var(--r);font-size:14px;opacity:0;pointer-events:none;transition:.2s;z-index:99;max-width:90vw}#toast.show{opacity:1;transform:translate(-50%,0)}
+footer{border-top:1px solid var(--border);padding:30px 0;color:var(--muted);font-size:13px}
+:focus-visible{outline:2px solid var(--olive-soft);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hc>*{opacity:1;transform:none}}
+</style></head><body>
+
+<nav id="nav"><div class="ni">
+  <a class="d logo" href="#home">TMS<i>.</i></a>
+  <div class="nl"><a href="#about">About</a><a href="#shop">Shop</a><a href="#process">Process</a></div>
+  <button class="cartbtn" id="openCart">Cart (<span id="cc">0</span>)</button>
+</div></nav>
+
+<header class="hero" id="home">
+  <img src="assets/hero.jpg" alt="Custom TMS shirt on a beach">
+  <div class="w hc">
+    <h1>Merch your community will actually wear.</h1>
+    <p>Premium custom apparel for brands, events and communities. Pick your pieces, set your quantity, and we handle design support through delivery.</p>
+    <div class="acts"><a class="btn" href="#shop">Shop the collection</a></div>
+  </div>
+</header>
+
+<section id="about"><div class="w two">
+  <div>
+    <div class="sh"><h2>Built for brands, events and communities.</h2><p>TMS is a merch production house. We design with you, print on quality fabric, finish cleanly and deliver on the timeline we promise.</p></div>
+    <div class="pill">
+      <div><b>Premium materials</b><span>Comfortable fabrics and durable print that survives the wash.</span></div>
+      <div><b>Bulk friendly</b><span>Structured for communities, events and large orders.</span></div>
+      <div><b>Design support included</b><span>Send a logo or an idea; we turn it into a mockup you approve.</span></div>
+    </div>
+  </div>
+  <img src="assets/about-jersey.jpg" alt="Community jersey produced by TMS">
+</div></section>
+
+<section id="shop" style="padding-top:0"><div class="w">
+  <div class="sh"><h2>The collection</h2><p>Prices are per piece, design support included. Choose a category, set quantity, add to cart.</p></div>
+  <div class="tabs" id="tabs" role="tablist"></div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="process" style="padding-top:0"><div class="w">
+  <div class="sh"><h2>How an order runs</h2></div>
+  <div class="steps">
+    <div><span class="d">01</span><b>Brief &amp; approval</b><span>2–3 days</span></div>
+    <div><span class="d">02</span><b>Mockup approval</b><span>2–5 days</span></div>
+    <div><span class="d">03</span><b>Production</b><span>7–14 working days</span></div>
+    <div><span class="d">04</span><b>Packaging &amp; delivery</b><span>2–5 days</span></div>
+  </div>
+</div></section>
+<footer><div class="w">TMS — The Merch Shop · Lagos, Nigeria</div></footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" aria-label="Cart">
+  <div class="dh"><h2 class="d">Your cart</h2><button class="x" id="closeCart" aria-label="Close cart">×</button></div>
+  <div class="lines" id="lines"></div>
+  <div class="tot b"><span>Subtotal</span><span id="dsub">₦0</span></div>
+  <button class="btn" id="toCo" style="margin-top:12px;width:100%">Checkout</button>
+</aside>
+
+<div id="co"><div class="cw">
+  <div class="ch"><span class="d" style="font-size:24px">TMS<i style="color:var(--olive-soft);font-style:normal">.</i></span><button class="btn g" id="backShop">← Back to shop</button></div>
+  <div id="coMain">
+    <div class="flow"><b>1 Pick pieces</b>›<b>2 Cart</b>›<b class="on">3 Details &amp; payment</b>›<b>4 Confirmation</b></div>
+    <div class="cg">
+      <div>
+        <fieldset><legend>Delivery details</legend>
+          <div class="r2"><label>Full name<input id="name" autocomplete="name"></label><label>Phone<input id="phone" autocomplete="tel"></label></div>
+          <label>Email<input id="email" type="email" autocomplete="email"></label>
+          <label>Delivery address<input id="addr" autocomplete="street-address"></label>
+          <div class="r2"><label>City<input id="city"></label><label>State<select id="state"><option>Lagos</option><option>FCT Abuja</option><option>Rivers</option><option>Oyo</option><option>Kano</option><option>Other</option></select></label></div>
+          <label>Design brief or logo link (optional)<textarea id="brief" placeholder="Colours, print placement, link to your logo…"></textarea></label>
+        </fieldset>
+        <fieldset><legend>Payment method</legend>
+          <div class="pt" role="tablist">
+            <button class="tab" aria-selected="true" data-p="card">Card</button>
+            <button class="tab" aria-selected="false" data-p="bank">Bank transfer</button>
+            <button class="tab" aria-selected="false" data-p="sol">Solana</button>
+          </div>
+          <div class="pane on" id="p-card">
+            <label>Card number<input id="cn" inputmode="numeric" placeholder="0000 0000 0000 0000" maxlength="19"></label>
+            <div class="r2"><label>Expiry<input id="ce" inputmode="numeric" placeholder="MM/YY" maxlength="5"></label><label>CVV<input id="cv" inputmode="numeric" maxlength="4"></label></div>
+            <p class="note">Charged in naira. Card details go to your payment provider, never to TMS.</p>
+          </div>
+          <div class="pane" id="p-bank">
+            <div class="kv"><span>Bank</span><b>Sample Bank PLC</b></div>
+            <div class="kv"><span>Account name</span><b>The Merch Shop Ltd</b></div>
+            <div class="kv"><span>Account number</span><b><span id="acct">0123456789</span><button class="cp" data-c="acct">Copy</button></b></div>
+            <div class="kv"><span>Amount</span><b class="amt"></b></div>
+            <div class="kv"><span>Reference</span><b><span id="ref">TMS-4821</span><button class="cp" data-c="ref">Copy</button></b></div>
+            <p class="note">Transfer the exact amount with the reference. Your order confirms once the transfer lands.</p>
+          </div>
+          <div class="pane" id="p-sol">
+            <div class="tk"><button aria-pressed="true" data-t="USDC">USDC</button><button aria-pressed="false" data-t="SOL">SOL</button></div>
+            <div class="kv"><span>Pay</span><b id="solAmt"></b></div>
+            <div class="kv"><span>To</span><b><span id="wal">YourTMSWalletAddressHere</span><button class="cp" data-c="wal">Copy</button></b></div>
+            <button class="btn g" id="conn" style="margin-top:12px;width:100%">Connect wallet</button>
+            <p class="note">Sample rates: ₦1,500 per USDC, ₦150,000 per SOL.</p>
+          </div>
+        </fieldset>
+        <button class="btn" id="pay" style="width:100%;padding:16px"></button>
+      </div>
+      <aside class="sum"><h2 class="d">Order summary</h2><div id="sl"></div>
+        <div class="tot"><span>Subtotal</span><span id="ssub"></span></div>
+        <div class="tot"><span>Delivery</span><span>₦3,500</span></div>
+        <div class="tot b"><span>Total</span><span class="amt"></span></div></aside>
+    </div>
+  </div>
+  <div class="done" id="done"><h1 class="d">Order received.</h1><p id="dm"></p><button class="btn g" onclick="location.href=location.pathname">Back to home</button></div>
+</div></div>
+<div id="toast" role="status"></div>
+
+<script>
+const P=[
+{id:1,n:'Premium Cotton Tee',c:'Tees',p:18000,d:'Soft everyday cotton, clean finish.',i:'assets/tee.jpg'},
+{id:2,n:'Acid Wash Tee',c:'Tees',p:23000,d:'Washed texture, one-of-one feel.',i:'assets/acid-wash.jpg'},
+{id:3,n:'Prime Cotton Tee',c:'Tees',p:27000,d:'Heavyweight cotton, top of the range.',i:'assets/prime-cotton.jpg'},
+{id:4,n:'Hoodie',c:'Hoodies',p:28000,d:'Heavy fleece, sleeve and hood print options.',i:'assets/hoodie.jpg'},
+{id:5,n:'Premium Cap',c:'Caps',p:5000,d:'Structured cap, embroidery or print.',i:''}];
+const SHIP=3500,USDC=1500,SOL=150000,cart={},pick={};let cat='All',method='card',tok='USDC';
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],N=n=>'₦'+n.toLocaleString('en-NG');
+const find=id=>P.find(x=>x.id==id),sub=()=>Object.entries(cart).reduce((a,[k,q])=>a+find(k).p*q,0),tot=()=>sub()+SHIP;
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2400)};
+const img=(x,cls)=>x.i?`<img ${cls||''} src="${x.i}" alt="${x.n}">`:`<div class="${cls?'t':''}" style="display:grid;place-items:center;height:100%;font-size:12px">Photo soon</div>`;
+
+function tabs(){const cs=['All',...new Set(P.map(x=>x.c))];$('#tabs').innerHTML=cs.map(c=>`<button class="tab" role="tab" aria-selected="${c==cat}" data-c="${c}">${c}</button>`).join('')}
+function grid(){$('#grid').innerHTML=P.filter(x=>cat=='All'||x.c==cat).map(x=>{pick[x.id]=pick[x.id]||1;return`<article class="card"><div class="ph">${img(x)}</div><div class="cb"><small>${x.c}</small><h3>${x.n}</h3><small>${x.d}</small><div class="pr">${N(x.p)}</div><div class="row"><div class="q"><button data-a="m" data-id="${x.id}" aria-label="Fewer">−</button><span>${pick[x.id]}</span><button data-a="p" data-id="${x.id}" aria-label="More">+</button></div><button class="btn" data-a="add" data-id="${x.id}">Add</button></div></div></article>`}).join('')}
+function lines(){const e=Object.entries(cart);
+ $('#lines').innerHTML=e.length?e.map(([k,q])=>{const x=find(k);return`<div class="ln">${img(x,'class="t"')}<div><b>${x.n}</b><small>${N(x.p)} each</small></div><div class="q"><button data-a="cm" data-id="${k}">−</button><span>${q}</span><button data-a="cp" data-id="${k}">+</button></div></div>`}).join(''):'<div class="empty">Your cart is empty. Pick a few pieces from the collection.</div>';
+ $('#sl').innerHTML=e.map(([k,q])=>`<div class="tot"><span>${q} × ${find(k).n}</span><span>${N(find(k).p*q)}</span></div>`).join('');
+ $('#cc').textContent=e.reduce((a,[,q])=>a+q,0);$('#dsub').textContent=N(sub());$('#ssub').textContent=N(sub());
+ $$('.amt').forEach(a=>a.textContent=N(tot()));
+ const u=(tot()/USDC).toFixed(2),s=(tot()/SOL).toFixed(4);$('#solAmt').textContent=tok=='USDC'?u+' USDC':s+' SOL';
+ $('#pay').textContent=method=='card'?'Pay '+N(tot())+' by card':method=='bank'?'I\u2019ve made the transfer':'Pay '+(tok=='USDC'?u+' USDC':s+' SOL')}
+const setCart=(id,d)=>{cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];lines()};
+const openCart=o=>document.body.classList.toggle('dr',o);
+
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const a=b.dataset.a,id=b.dataset.id;
+ if(a=='m'||a=='p'){pick[id]=Math.max(1,pick[id]+(a=='p'?1:-1));grid()}
+ else if(a=='add'){setCart(id,pick[id]);toast(pick[id]+' × '+find(id).n+' added');pick[id]=1;grid()}
+ else if(a=='cm'||a=='cp')setCart(id,a=='cp'?1:-1);
+ else if(b.parentElement.id=='tabs'){cat=b.dataset.c;tabs();grid()}
+ else if(b.classList.contains('cp')){const v=$('#'+b.dataset.c).textContent;navigator.clipboard?.writeText(v).then(()=>toast('Copied'),()=>toast('Copy failed'))}});
+$('#openCart').onclick=()=>openCart(true);$('#closeCart').onclick=$('#scrim').onclick=()=>openCart(false);
+$('#toCo').onclick=()=>{if(!Object.keys(cart).length){toast('Add something to your cart first');return}openCart(false);location.hash='checkout'};
+$('#backShop').onclick=()=>{location.hash='shop'};
+function route(){const on=location.hash=='#checkout'&&Object.keys(cart).length>0;if(location.hash=='#checkout'&&!on)location.hash='shop';document.body.classList.toggle('co',on)}
+addEventListener('hashchange',route);
+
+$$('.pt .tab').forEach(t=>t.onclick=()=>{method=t.dataset.p;$$('.pt .tab').forEach(x=>x.setAttribute('aria-selected',x==t));$$('.pane').forEach(p=>p.classList.toggle('on',p.id=='p-'+method));$('#ref').textContent='TMS-'+(1000+Math.floor(Math.random()*9000));lines()});
+$$('.tk button').forEach(b=>b.onclick=()=>{tok=b.dataset.t;$$('.tk button').forEach(x=>x.setAttribute('aria-pressed',x==b));lines()});
+$('#conn').onclick=e=>{e.target.textContent='Connected: 7xKd…9fQ2';toast('Wallet connected (demo)')};
+$('#cn').oninput=e=>e.target.value=e.target.value.replace(/\D/g,'').slice(0,16).replace(/(.{4})/g,'$1 ').trim();
+$('#ce').oninput=e=>{let v=e.target.value.replace(/\D/g,'').slice(0,4);e.target.value=v.length>2?v.slice(0,2)+'/'+v.slice(2):v};
+$$('input,textarea').forEach(i=>i.addEventListener('input',()=>i.classList.remove('bad')));
+const need=ids=>ids.map(i=>{const el=$('#'+i),b=!el.value.trim();el.classList.toggle('bad',b);return!b}).every(Boolean);
+$('#pay').onclick=()=>{
+ if(!need(['name','phone','email','addr','city'])){toast('Fill in your delivery details first');return}
+ if(method=='card'&&(!need(['cn','ce','cv'])||$('#cn').value.replace(/\s/g,'').length<13)){toast('Check your card details');return}
+ if(method=='sol'&&$('#conn').textContent=='Connect wallet'){toast('Connect your wallet to pay');return}
+ const b=$('#pay');b.disabled=true;b.textContent='Processing…';
+ setTimeout(()=>{$('#coMain').style.display='none';$('#done').style.display='block';
+  $('#dm').textContent='Thanks, '+$('#name').value.split(' ')[0]+'. We\u2019ve got your order and will send a confirmation to '+$('#email').value+'. Next step: we\u2019ll message you to confirm the design brief.';$('#co').scrollTo(0,0)},1200)};
+const nav=$('#nav'),sc=()=>nav.classList.toggle('s',scrollY>40);addEventListener('scroll',sc,{passive:true});sc();
+tabs();grid();lines();route();
+</script></body></html>
