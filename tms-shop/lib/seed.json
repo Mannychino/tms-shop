@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "name": "Premium Cotton Tee",
+    "category": "Tees",
+    "price_kobo": 1800000,
+    "description": "Soft everyday cotton, clean finish.",
+    "image": "/assets/tee.jpg",
+    "active": true
+  },
+  {
+    "id": "2",
+    "name": "Acid Wash Tee",
+    "category": "Tees",
+    "price_kobo": 2300000,
+    "description": "Washed texture, one-of-one feel.",
+    "image": "/assets/acid-wash.jpg",
+    "active": true
+  },
+  {
+    "id": "3",
+    "name": "Prime Cotton Tee",
+    "category": "Tees",
+    "price_kobo": 2700000,
+    "description": "Heavyweight cotton, top of the range.",
+    "image": "/assets/prime-cotton.jpg",
+    "active": true
+  },
+  {
+    "id": "4",
+    "name": "Hoodie",
+    "category": "Hoodies",
+    "price_kobo": 2800000,
+    "description": "Heavy fleece, sleeve and hood print options.",
+    "image": "/assets/hoodie.jpg",
+    "active": true
+  },
+  {
+    "id": "5",
+    "name": "Premium Cap",
+    "category": "Caps",
+    "price_kobo": 500000,
+    "description": "Structured cap, embroidery or print.",
+    "image": "",
+    "active": true
+  }
+]

@@ -1,0 +1,3 @@
+import {validSignature} from '@/lib/payment-signature';
+import {verifyPayment} from '@/lib/paystack';
+export async function POST(request:Request){const secret=process.env.PAYSTACK_SECRET_KEY;if(!secret)return new Response('Not configured',{status:503});const raw=await request.text();if(!validSignature(raw,request.headers.get('x-paystack-signature')||'',secret))return new Response('Unauthorized',{status:401});let event;try{event=JSON.parse(raw);}catch{return new Response('Invalid JSON',{status:400});}try{if(event.event==='charge.success'&&typeof event.data?.reference==='string')await verifyPayment(event.data.reference);return Response.json({received:true});}catch{return new Response('Verification failed',{status:502});}}

@@ -2,7 +2,9 @@
 <html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>TMS — The Merch Shop</title>
+<title>TMS — Made for your people.</title>
+<meta name="description" content="Custom merch for brands, events and communities. Explore premium tees, hoodies and caps, with design support from brief to delivery.">
+<meta name="theme-color" content="#0C0C0C">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0C0C0C;--surface:#17160F;--fg:#F3F2ED;--muted:#9B998E;--olive:#5C6B4A;--olive-soft:#8FA37C;--border:#2A2924;--err:#D46A5A;--r:4px;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -85,43 +87,49 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--olive-so
 footer{border-top:1px solid var(--border);padding:30px 0;color:var(--muted);font-size:13px}
 :focus-visible{outline:2px solid var(--olive-soft);outline-offset:2px}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hc>*{opacity:1;transform:none}}
-</style></head><body>
+</style>
+<link rel="stylesheet" href="branding.css">
+</head><body>
+<a class="skip" href="#shop">Skip to collection</a>
 
 <nav id="nav"><div class="ni">
-  <a class="d logo" href="#home">TMS<i>.</i></a>
+  <a class="brand" href="#home" aria-label="TMS — The Merch Shop home"><span class="d logo">TMS<i>✳</i></span><span class="brand-name">THE MERCH<br>SHOP</span></a>
   <div class="nl"><a href="#about">About</a><a href="#shop">Shop</a><a href="#process">Process</a></div>
-  <button class="cartbtn" id="openCart">Cart (<span id="cc">0</span>)</button>
+  <button class="cartbtn" id="openCart">Cart <span id="cc">0</span></button>
 </div></nav>
 
 <header class="hero" id="home">
-  <img src="assets/hero.jpg" alt="Custom TMS shirt on a beach">
+  <div class="hero-photo"><img src="assets/hero.jpg" alt="Printed resort shirt worn by the sea" fetchpriority="high"><span class="photo-caption">GOOD MERCH. EVERYWHERE.</span></div>
   <div class="w hc">
-    <h1>Merch your community will actually wear.</h1>
-    <p>Premium custom apparel for brands, events and communities. Pick your pieces, set your quantity, and we handle design support through delivery.</p>
-    <div class="acts"><a class="btn" href="#shop">Shop the collection</a></div>
+    <div class="eyebrow"><span class="status-dot"></span> THE MERCH SHOP · LAGOS, NG</div>
+    <h1>Made for<br>your <em>people.</em></h1>
+    <p>Your brand. Their favourite thing to wear. Custom apparel for the communities, ideas and moments that bring people together.</p>
+    <div class="acts"><a class="btn" href="#shop">Explore the collection <span aria-hidden="true">↗</span></a><a class="text-link" href="#process">How we make it happen <span aria-hidden="true">↓</span></a></div>
+    <div class="hero-foot"><span>DESIGN TO DELIVERY. HANDLED.</span><span>01 — THE TMS WAY</span></div>
   </div>
 </header>
+<div class="brand-strip" aria-label="Our focus"><div class="w"><span>FOR THE CULTURE.</span><span aria-hidden="true">✳</span><span>FOR THE COMMUNITY.</span><span aria-hidden="true">✳</span><span>FOR THE EVERYDAY.</span></div></div>
 
 <section id="about"><div class="w two">
   <div>
-    <div class="sh"><h2>Built for brands, events and communities.</h2><p>TMS is a merch production house. We design with you, print on quality fabric, finish cleanly and deliver on the timeline we promise.</p></div>
+    <div class="sh"><span class="eyebrow">01 / THE IDEA</span><h2>More than a logo.<br>A sense of belonging.</h2><p>TMS is a merch production house. We design with you, print on quality fabric, finish cleanly and deliver on the timeline we promise.</p></div>
     <div class="pill">
       <div><b>Premium materials</b><span>Comfortable fabrics and durable print that survives the wash.</span></div>
       <div><b>Bulk friendly</b><span>Structured for communities, events and large orders.</span></div>
       <div><b>Design support included</b><span>Send a logo or an idea; we turn it into a mockup you approve.</span></div>
     </div>
   </div>
-  <img src="assets/about-jersey.jpg" alt="Community jersey produced by TMS">
+  <figure class="about-photo"><img src="assets/about-jersey.jpg" alt="Community jersey with custom graphics" loading="lazy"><figcaption><span>DETAILS MAKE THE DIFFERENCE.</span><span>↗</span></figcaption></figure>
 </div></section>
 
 <section id="shop" style="padding-top:0"><div class="w">
-  <div class="sh"><h2>The collection</h2><p>Prices are per piece, design support included. Choose a category, set quantity, add to cart.</p></div>
+  <div class="sh collection-head"><div><span class="eyebrow">02 / PICK YOUR CANVAS</span><h2>Good things.<br>Made yours.</h2></div><p>The essentials, with your identity all over them. Prices per piece. Design support included.</p></div>
   <div class="tabs" id="tabs" role="tablist"></div>
   <div class="grid" id="grid"></div>
 </div></section>
 
 <section id="process" style="padding-top:0"><div class="w">
-  <div class="sh"><h2>How an order runs</h2></div>
+  <div class="sh collection-head"><div><span class="eyebrow">03 / FROM IDEA TO IN YOUR HANDS</span><h2>You bring the vision.<br>We make it wearable.</h2></div><p>A clear process, considered details and support at every step.</p></div>
   <div class="steps">
     <div><span class="d">01</span><b>Brief &amp; approval</b><span>2–3 days</span></div>
     <div><span class="d">02</span><b>Mockup approval</b><span>2–5 days</span></div>
@@ -129,7 +137,7 @@ footer{border-top:1px solid var(--border);padding:30px 0;color:var(--muted);font
     <div><span class="d">04</span><b>Packaging &amp; delivery</b><span>2–5 days</span></div>
   </div>
 </div></section>
-<footer><div class="w">TMS — The Merch Shop · Lagos, Nigeria</div></footer>
+<footer><div class="w"><div class="footer-top"><a class="d footer-wordmark" href="#home" aria-label="TMS home">TMS<span>✳</span></a><p>Made for your people.<br><span>Custom merch. Lagos, Nigeria.</span></p><a class="text-link" href="#shop">Find your next favourite ↗</a></div><div class="footer-bottom"><span>THE MERCH SHOP</span><span>BRANDS. EVENTS. COMMUNITIES.</span><a href="#home">BACK TO TOP ↑</a></div></div></footer>
 
 <div class="scrim" id="scrim"></div>
 <aside class="drawer" aria-label="Cart">
@@ -152,7 +160,7 @@ footer{border-top:1px solid var(--border);padding:30px 0;color:var(--muted);font
           <div class="r2"><label>City<input id="city"></label><label>State<select id="state"><option>Lagos</option><option>FCT Abuja</option><option>Rivers</option><option>Oyo</option><option>Kano</option><option>Other</option></select></label></div>
           <label>Design brief or logo link (optional)<textarea id="brief" placeholder="Colours, print placement, link to your logo…"></textarea></label>
         </fieldset>
-        <fieldset><legend>Payment method</legend>
+        <fieldset><legend>Payment method</legend><p class="demo-note">Prototype preview — payments are simulated. Do not enter real card details.</p>
           <div class="pt" role="tablist">
             <button class="tab" aria-selected="true" data-p="card">Card</button>
             <button class="tab" aria-selected="false" data-p="bank">Bank transfer</button>
@@ -205,9 +213,9 @@ const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');clea
 const img=(x,cls)=>x.i?`<img ${cls||''} src="${x.i}" alt="${x.n}">`:`<div class="${cls?'t':''}" style="display:grid;place-items:center;height:100%;font-size:12px">Photo soon</div>`;
 
 function tabs(){const cs=['All',...new Set(P.map(x=>x.c))];$('#tabs').innerHTML=cs.map(c=>`<button class="tab" role="tab" aria-selected="${c==cat}" data-c="${c}">${c}</button>`).join('')}
-function grid(){$('#grid').innerHTML=P.filter(x=>cat=='All'||x.c==cat).map(x=>{pick[x.id]=pick[x.id]||1;return`<article class="card"><div class="ph">${img(x)}</div><div class="cb"><small>${x.c}</small><h3>${x.n}</h3><small>${x.d}</small><div class="pr">${N(x.p)}</div><div class="row"><div class="q"><button data-a="m" data-id="${x.id}" aria-label="Fewer">−</button><span>${pick[x.id]}</span><button data-a="p" data-id="${x.id}" aria-label="More">+</button></div><button class="btn" data-a="add" data-id="${x.id}">Add</button></div></div></article>`}).join('')}
+function grid(){$('#grid').innerHTML=P.filter(x=>cat=='All'||x.c==cat).map(x=>{pick[x.id]=pick[x.id]||1;return`<article class="card"><div class="ph">${img(x)}</div><div class="cb"><small class="product-category">${x.c} <span>0${x.id}</span></small><h3>${x.n}</h3><small>${x.d}</small><div class="pr">${N(x.p)}</div><div class="row"><div class="q"><button data-a="m" data-id="${x.id}" aria-label="Fewer">−</button><span>${pick[x.id]}</span><button data-a="p" data-id="${x.id}" aria-label="More">+</button></div><button class="btn" data-a="add" data-id="${x.id}">Add to cart <span aria-hidden="true">+</span></button></div></div></article>`}).join('')}
 function lines(){const e=Object.entries(cart);
- $('#lines').innerHTML=e.length?e.map(([k,q])=>{const x=find(k);return`<div class="ln">${img(x,'class="t"')}<div><b>${x.n}</b><small>${N(x.p)} each</small></div><div class="q"><button data-a="cm" data-id="${k}">−</button><span>${q}</span><button data-a="cp" data-id="${k}">+</button></div></div>`}).join(''):'<div class="empty">Your cart is empty. Pick a few pieces from the collection.</div>';
+ $('#lines').innerHTML=e.length?e.map(([k,q])=>{const x=find(k);return`<div class="ln">${img(x,'class="t"')}<div><b>${x.n}</b><small>${N(x.p*q)} · ${q} × ${N(x.p)}</small></div><div class="q"><button aria-label="Decrease quantity" data-a="cm" data-id="${k}">−</button><span>${q}</span><button aria-label="Increase quantity" data-a="cp" data-id="${k}">+</button></div></div>`}).join(''):'<div class="empty">Your cart is empty. Pick a few pieces from the collection.</div>';
  $('#sl').innerHTML=e.map(([k,q])=>`<div class="tot"><span>${q} × ${find(k).n}</span><span>${N(find(k).p*q)}</span></div>`).join('');
  $('#cc').textContent=e.reduce((a,[,q])=>a+q,0);$('#dsub').textContent=N(sub());$('#ssub').textContent=N(sub());
  $$('.amt').forEach(a=>a.textContent=N(tot()));
