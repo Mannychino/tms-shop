@@ -1,7 +1,10 @@
 import {getProducts} from '@/lib/catalog';
 import {Catalog} from '@/components/catalog';
-export default async function Home(){const products=await getProducts();return <><header className="hero" id="home">
-  <div className="hero-photo"><img src="/assets/hero.jpg" alt="Printed resort shirt worn by the sea" fetchPriority="high" /><span className="photo-caption">GOOD MERCH. EVERYWHERE.</span></div>
+export default async function Home(){
+  const products=await getProducts();return <><header className="hero" id="home">
+  <div className="hero-photo"><img src="/assets/hero.jpg" alt="Printed resort shirt worn by the sea" fetchPriority="high" />
+  <span className="photo-caption">GOOD MERCH. EVERYWHERE.</span>
+  </div>
   <div className="w hc">
     <div className="eyebrow"><span className="status-dot"></span> THE MERCH SHOP · LAGOS, NG</div>
     <h1>Made for<br />your <em>people.</em></h1>

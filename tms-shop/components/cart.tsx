@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { naira, type Line, type Product } from '@/lib/money';
@@ -68,10 +69,17 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     <Context.Provider value={{ lines, setLines, ready }}>
       <nav className="s">
         <div className="ni">
-          <Link className="brand" href="/">
-            <span className="d logo">TMS<i>✳</i></span>
-            <span className="brand-name">THE MERCH<br />SHOP</span>
-          </Link>
+
+          <Link className="brand" href="/" aria-label="The Merch Shop home">
+  <Image
+    src="/assets/redesign/tms-logo.jpg"
+    alt="TMS"
+    width={80}
+    height={80}
+    className="brand-mark"
+  />
+</Link>
+
           <div className="nl">
             <Link href="/#about">About</Link>
             <Link href="/#shop">Shop</Link>
