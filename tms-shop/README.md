@@ -1,4 +1,4 @@
-# TMS storefront
+  # TMS storefront
 
 Next.js App Router + TypeScript, with a Node server provided by Next.js. The original `index.html`, `branding.css`, and source assets remain as the prototype reference.
 
