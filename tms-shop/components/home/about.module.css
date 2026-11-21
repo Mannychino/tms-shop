@@ -1,0 +1,151 @@
+.section {
+    padding-block: clamp(64px, 7vw, 112px);
+    scroll-margin-top: 104px;
+    background: #fff;
+    color: #111;
+}
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: clamp(20px, 5vw, 72px);
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(32px, 5vw, 80px);
+}
+
+.copy {
+    min-width: 0;
+}
+
+.eyebrow {
+    margin: 0 0 24px;
+    font-family: var(--font-body), sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.title {
+    margin: 0 0 28px;
+    font-family: var(--font-heading), sans-serif;
+    font-size: clamp(30px, 3.2vw, 46px);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.04em;
+}
+
+.description {
+    max-width: 48ch;
+}
+
+.description p {
+    margin: 0;
+    color: #606060;
+    font-family: var(--font-body), sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.description p+p {
+    margin-top: 16px;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px 28px;
+    margin-top: 32px;
+}
+
+.primaryLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 14px 24px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    background: #000;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.primaryLink:hover {
+    background: #333;
+}
+
+.secondaryLink {
+    padding-block: 10px;
+    color: #111;
+    font-size: 14px;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+.actions a:focus-visible {
+    outline: 2px solid #111;
+    outline-offset: 4px;
+}
+
+.imageFrame {
+    position: relative;
+    min-width: 0;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #34383b;
+}
+
+.image {
+    object-fit: cover;
+    object-position: center;
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 32px;
+    margin: 48px 0 0;
+    padding: 24px 0 0;
+    border-top: 1px solid #e5e5e5;
+    list-style: none;
+}
+
+.features li {
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.12em;
+}
+
+@media (max-width: 800px) {
+    .layout {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    .description {
+        max-width: 60ch;
+    }
+
+    .imageFrame {
+        width: 100%;
+        max-width: 600px;
+        justify-self: center;
+    }
+
+    .features {
+        margin-top: 32px;
+    }
+}

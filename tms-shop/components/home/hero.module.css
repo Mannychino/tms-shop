@@ -8,8 +8,8 @@
   position: relative;
   width: 100%;
   max-width: 1440px;
+  height: clamp(280px, 56svh, 640px);
   margin-inline: auto;
-  aspect-ratio: 2 / 1;
   overflow: hidden;
 }
 
@@ -76,6 +76,11 @@
   .hero {
     padding-top: 80px;
   }
+
+    .imageFrame {
+      height: auto;
+      aspect-ratio: 2 / 1;
+    }
 
   .content {
     padding-top: 20px;

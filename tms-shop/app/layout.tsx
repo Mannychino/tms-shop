@@ -28,10 +28,7 @@ export default function Layout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${bodyFont.variable} ${headingFont.variable}`}
-    >
+    <html lang="en" className={`${bodyFont.variable} ${headingFont.variable}`} >
       <body>
         <CartProvider>{children}</CartProvider>
       </body>
